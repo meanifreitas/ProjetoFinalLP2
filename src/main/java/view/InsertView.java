@@ -6,6 +6,7 @@
 package view;
 
 import controller.MySQLConnector;
+import javax.swing.JOptionPane;
 import model.Projeto;
 
 /**
@@ -45,9 +46,9 @@ public class InsertView extends javax.swing.JFrame {
         jTxtFieldNome = new javax.swing.JTextField();
         jTxtFieldSolicitante = new javax.swing.JTextField();
         jTxtFieldProfessor = new javax.swing.JTextField();
-        jTxtFieldPrazo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTxtAreaDescricao = new javax.swing.JTextArea();
+        jTxtFieldPrazo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
@@ -100,8 +101,6 @@ public class InsertView extends javax.swing.JFrame {
 
         jTxtFieldProfessor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jTxtFieldPrazo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         jTxtAreaDescricao.setColumns(20);
         jTxtAreaDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTxtAreaDescricao.setRows(5);
@@ -132,9 +131,9 @@ public class InsertView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtFieldPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtFieldPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -152,9 +151,7 @@ public class InsertView extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTxtFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -164,14 +161,13 @@ public class InsertView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel6))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTxtFieldProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtFieldPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonLimpar))
                 .addGap(36, 36, 36))
@@ -197,8 +193,24 @@ public class InsertView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        //salvar
-        jButtonLimparActionPerformed(evt);
+        Projeto projeto = new Projeto();
+        
+        projeto.setNome(jTxtFieldNome.getText());
+        projeto.setDescricao(jTxtAreaDescricao.getText());
+        projeto.setSolicitante(jTxtFieldSolicitante.getText());
+        projeto.setProfessor(jTxtFieldProfessor.getText());
+        projeto.setPrazo(Integer.parseInt(jTxtFieldPrazo.getText()));
+
+        int insert = database.insert(projeto);
+        
+        if (insert > 0) {
+            jButtonLimparActionPerformed(evt);
+            JOptionPane.showMessageDialog(this, "Projeto adicionado com sucesso!");
+            this.dispose();
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao inserir o projeto!");
+        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**

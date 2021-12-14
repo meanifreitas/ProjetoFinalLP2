@@ -36,9 +36,9 @@ public class MySQLConnector {
         int result = 0;
         
         try {
-            String qr = "insert into projetos (nome, descricao, solicitante, professor, prazo) values ('" 
-                + projeto.getNome() + "', '" + projeto.getDescricao() + "', '" + projeto.getSolicitante() + "', " 
-                + projeto.getProfessor() + ", " + projeto.getPrazo() + ";";
+            String qr = "insert into projetos (nome_projeto, descricao_projeto, nome_solicitante, nome_professor_responsavel, prazo)"
+                + " values ('" + projeto.getNome() + "', '" + projeto.getDescricao() + "', '" + projeto.getSolicitante()
+                + "', '" + projeto.getProfessor() + "', " + projeto.getPrazo() + ");";
             
             Statement st = (Statement) connection.createStatement();
             result = st.executeUpdate(qr);
@@ -66,9 +66,10 @@ public class MySQLConnector {
         int result = 0;
         
         try {  
-            String qr = "update projetos set nome = '" + projeto.getNome() + "', descricao = '" + projeto.getDescricao()
-                + "', solicitante = '" + projeto.getSolicitante() + "', professor = '" + projeto.getProfessor()
-                + "', prazo = '" + projeto.getPrazo() + "' where id = " + id + ";";
+            String qr = "update projetos set nome_projeto = '" + projeto.getNome() + "', descricao_projeto = '"
+                + projeto.getDescricao() + "', nome_solicitante = '" + projeto.getSolicitante()
+                + "', nome_professor_responsavel = '" + projeto.getProfessor() + "', prazo = '"
+                + projeto.getPrazo() + "' where id = " + id + ";";
             System.out.println(qr);
             Statement st = (Statement) connection.createStatement();
             result = st.executeUpdate(qr);

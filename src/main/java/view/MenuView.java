@@ -29,6 +29,20 @@ public class MenuView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextNomeProjeto = new javax.swing.JTextField();
+        jTextDescricao = new javax.swing.JTextField();
+        jTextNomeSolicitante = new javax.swing.JTextField();
+        jTextNomeProfessor = new javax.swing.JTextField();
+        jTextPrazo = new javax.swing.JTextField();
+        Cadastro = new javax.swing.JButton();
+        Consulta = new javax.swing.JButton();
+        Alteracao = new javax.swing.JButton();
+        Exclusao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,31 +51,152 @@ public class MenuView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Versão 1.0");
 
+        jLabel3.setText("Nome Projeto:");
+
+        jLabel4.setText("Descrição Projeto:");
+
+        jLabel5.setText("Nome Solicitante:");
+
+        jLabel6.setText("Nome Professor Responsavel:");
+
+        jLabel7.setText("Prazo: ");
+
+        jTextNomeProjeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNomeProjetoActionPerformed(evt);
+            }
+        });
+
+        jTextDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextDescricaoActionPerformed(evt);
+            }
+        });
+
+        jTextNomeSolicitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNomeSolicitanteActionPerformed(evt);
+            }
+        });
+
+        Cadastro.setText("Cadastro");
+        Cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroActionPerformed(evt);
+            }
+        });
+
+        Consulta.setText("Consulta");
+
+        Alteracao.setText("Alteração");
+        Alteracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlteracaoActionPerformed(evt);
+            }
+        });
+
+        Exclusao.setText("Exclusão");
+        Exclusao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExclusaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addContainerGap(264, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Cadastro)
+                        .addGap(40, 40, 40)
+                        .addComponent(Consulta)
+                        .addGap(44, 44, 44)
+                        .addComponent(Alteracao)
+                        .addGap(49, 49, 49)
+                        .addComponent(Exclusao))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextNomeProjeto)
+                        .addComponent(jTextDescricao)
+                        .addComponent(jTextNomeSolicitante)
+                        .addComponent(jTextNomeProfessor)
+                        .addComponent(jTextPrazo, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextNomeProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(1, 1, 1)
+                .addComponent(jTextNomeSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cadastro)
+                    .addComponent(Consulta)
+                    .addComponent(Alteracao)
+                    .addComponent(Exclusao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CadastroActionPerformed
+
+    private void AlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlteracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlteracaoActionPerformed
+
+    private void ExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExclusaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExclusaoActionPerformed
+
+    private void jTextNomeProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeProjetoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNomeProjetoActionPerformed
+
+    private void jTextDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextDescricaoActionPerformed
+
+    private void jTextNomeSolicitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeSolicitanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNomeSolicitanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +234,21 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Alteracao;
+    private javax.swing.JButton Cadastro;
+    private javax.swing.JButton Consulta;
+    private javax.swing.JButton Exclusao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jTextDescricao;
+    private javax.swing.JTextField jTextNomeProfessor;
+    private javax.swing.JTextField jTextNomeProjeto;
+    private javax.swing.JTextField jTextNomeSolicitante;
+    private javax.swing.JTextField jTextPrazo;
     // End of variables declaration//GEN-END:variables
 }
